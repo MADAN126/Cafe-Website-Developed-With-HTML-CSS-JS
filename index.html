@@ -1,0 +1,241 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cafe Delight</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#f8f5f0;
+      color:#333;
+    }
+
+    header{
+      background:#4b2e2e;
+      color:white;
+      padding:20px;
+      text-align:center;
+    }
+
+    nav{
+      margin-top:10px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 15px;
+      font-weight:bold;
+    }
+
+    .hero{
+      height:350px;
+      background:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop') center/cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-align:center;
+    }
+
+    .hero h1{
+      font-size:50px;
+      background:rgba(0,0,0,0.5);
+      padding:15px 25px;
+      border-radius:10px;
+    }
+
+    .menu{
+      padding:50px 20px;
+      text-align:center;
+    }
+
+    .menu h2{
+      margin-bottom:30px;
+      font-size:35px;
+      color:#4b2e2e;
+    }
+
+    .menu-container{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      width:250px;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:15px;
+    }
+
+    .price{
+      color:green;
+      font-size:20px;
+      margin:10px 0;
+    }
+
+    button{
+      background:#4b2e2e;
+      color:white;
+      border:none;
+      padding:10px 15px;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#6d4444;
+    }
+
+    .cart{
+      margin-top:40px;
+      text-align:center;
+    }
+
+    .cart h2{
+      margin-bottom:20px;
+      color:#4b2e2e;
+    }
+
+    #cartItems{
+      list-style:none;
+      margin-bottom:20px;
+    }
+
+    footer{
+      background:#4b2e2e;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cafe Delight</h1>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Menu</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome To Our Cafe ☕</h1>
+  </section>
+
+  <section class="menu">
+    <h2>Our Menu</h2>
+
+    <div class="menu-container">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" alt="Coffee">
+        
+        <div class="card-content">
+          <h3>Cappuccino</h3>
+          <p>Fresh hot coffee with creamy milk.</p>
+          <div class="price">₹120</div>
+
+          <button onclick="addToCart('Cappuccino')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop" alt="Burger">
+
+        <div class="card-content">
+          <h3>Cheese Burger</h3>
+          <p>Loaded burger with extra cheese.</p>
+          <div class="price">₹180</div>
+
+          <button onclick="addToCart('Cheese Burger')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop" alt="Pizza">
+
+        <div class="card-content">
+          <h3>Veg Pizza</h3>
+          <p>Cheesy pizza with fresh veggies.</p>
+          <div class="price">₹250</div>
+
+          <button onclick="addToCart('Veg Pizza')">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cart">
+      <h2>🛒 Cart</h2>
+
+      <ul id="cartItems"></ul>
+
+      <h3 id="totalItems">
+        Total Items: 0
+      </h3>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Cafe Delight | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    let count = 0;
+
+    function addToCart(item){
+      const cartItems = document.getElementById("cartItems");
+
+      const li = document.createElement("li");
+      li.innerText = item + " added to cart";
+
+      cartItems.appendChild(li);
+
+      count++;
+
+      document.getElementById("totalItems").innerText =
+        "Total Items: " + count;
+    }
+  </script>
+
+</body>
+</html>
